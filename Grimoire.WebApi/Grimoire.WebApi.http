@@ -1,0 +1,6 @@
+@Grimoire.WebApi_HostAddress = http://localhost:5011
+
+GET {{Grimoire.WebApi_HostAddress}}/spells/
+Accept: application/json
+
+###
