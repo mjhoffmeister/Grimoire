@@ -6,15 +6,14 @@ WORKDIR /source
 COPY *.sln .
 COPY Grimoire.Core/*.csproj ./Grimoire.Core/
 COPY Grimoire.Core.UnitTests/*.csproj ./Grimoire.Core.UnitTests/
-COPY Grimoire.Infrastructure/*.csproj ./Grimoire.Infrastructure/
-COPY Grimoire.Infrastructure.IntegrationTests/*.csproj ./Grimoire.Infrastructure.IntegrationTests/
+COPY Grimoire.Infrastructure.Fakes/*.csproj ./Grimoire.Infrastructure.Fakes/
 COPY Grimoire.Bootstrapper/*.csproj ./Grimoire.Bootstrapper/
 COPY Grimoire.WebApi/*.csproj ./Grimoire.WebApi/
 RUN dotnet restore
 
 # Copy the remaining files and build the project
 COPY Grimoire.Core/. ./Grimoire.Core/
-COPY Grimoire.Infrastructure/. ./Grimoire.Infrastructure/
+COPY Grimoire.Infrastructure.Fakes/. ./Grimoire.Infrastructure.Fakes/
 COPY Grimoire.Bootstrapper/. ./Grimoire.Bootstrapper/
 COPY Grimoire.WebApi/. ./Grimoire.WebApi/
 WORKDIR /source/Grimoire.WebApi
