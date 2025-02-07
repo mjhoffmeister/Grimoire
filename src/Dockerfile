@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/microsoft-dotnet
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /source
 
 # Copy the project files and restore the dependencies
@@ -20,7 +20,8 @@ WORKDIR /source/Grimoire.WebApi
 RUN dotnet publish -c release -o /app --no-restore
 
 # Final stage/image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM mcr.microsoft.com/dotnet/aspnet:9.0
+EXPOSE 8080
 WORKDIR /app
 COPY --from=build /app ./
 ENTRYPOINT ["dotnet", "Grimoire.WebApi.dll"]
